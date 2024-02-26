@@ -9,6 +9,18 @@
             <xpath expr="//field[@name='payment_term_id']" position="after">
                 <field name="kode"/>
             </xpath>
+            <xpath expr="//page[@name='customer_signature']" position="after">
+                <page name="latihan" string="Pertemuan 6">
+                	<group>
+                		<field name="a"/>
+                		<field name="b"/>
+                		<field name="c"/>
+                		<field name="d"/>
+                		<field name="nilai"/>
+                		<button name="hitung_c" string="Hitung" type="object"/>
+                	</group>
+            	</page>
+            </xpath>
         </field>
     </record>
 
