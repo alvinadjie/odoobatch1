@@ -1,0 +1,148 @@
+<odoo>
+  <data>
+
+    <!-- Movie -->
+    
+    <record id="view_movie_tree" model="ir.ui.view">
+      <field name="name">movie.tree</field>
+      <field name="model">movie</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="date_release"/>
+            <field name="artist_ids" widget="many2many_tags"/>
+            <field name="studio_id"/>
+            <field name="rating"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="movie_view_form" model="ir.ui.view">
+            <field name="name">movie.view.form</field>
+            <field name="model">movie</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                              <field name="name"/>
+                              <field name="date_release"/>
+                              <field name="artist_ids" widget="many2many_tags"/>
+                              <field name="studio_id"/>
+                              <field name="rating"/>
+                          </group>
+                        </group>
+                        <notebook>
+                          <page name="review">
+                            <group>
+                              <field name="review_ids">
+                                <tree editable="bottom" label="0">
+                                  <field name="create_date"/>
+                                  <field name="review"/>
+                              </tree>
+                              </field>
+                            </group>
+                        </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+  <!-- End of Movie -->
+
+  <!-- Artist -->
+
+  <record id="view_artist_tree" model="ir.ui.view">
+      <field name="name">artist.tree</field>
+      <field name="model">artist</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="date_birth"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="artist_view_form" model="ir.ui.view">
+        <field name="name">artist.view.form</field>
+        <field name="model">artist</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                          <field name="name"/>
+                          <field name="date_birth"/>
+                      </group>>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+  <!-- End of Artist -->
+
+  <!-- Studio -->
+
+  <record id="view_studio_tree" model="ir.ui.view">
+      <field name="name">studio.tree</field>
+      <field name="model">studio</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="studio_view_form" model="ir.ui.view">
+        <field name="name">studio.view.form</field>
+        <field name="model">studio</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                          <field name="name"/>
+                      </group>>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+  <!-- End of Studio -->
+    
+
+    <!-- actions opening views on models -->
+    
+    <record model="ir.actions.act_window" id="movie_action">
+      <field name="name">Movie</field>
+      <field name="res_model">movie</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="artist_action">
+      <field name="name">Artist</field>
+      <field name="res_model">artist</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="studio_action">
+      <field name="name">Studio</field>
+      <field name="res_model">studio</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+    <menuitem name="Movie APP" id="movie_app_menu" action="movie_action"/>
+    <menuitem name="Movie" id="movie_menu" parent="movie_app_menu" action="movie_action"/>
+    <menuitem name="Artist" id="artist_menu" parent="movie_app_menu" action="artist_action"/>
+    <menuitem name="Studio" id="studio_menu" parent="movie_app_menu" action="studio_action"/>
+
+    
+  </data>
+</odoo>

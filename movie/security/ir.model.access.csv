@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_movie,access_movie,model_movie,base.group_user,1,1,1,1
+access_artist,access_artist,model_artist,base.group_user,1,1,1,1
+access_studio,access_studio,model_studio,base.group_user,1,1,1,1
+access_review,access_review,model_review,base.group_user,1,1,1,1
